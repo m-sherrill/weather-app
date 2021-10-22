@@ -60,7 +60,7 @@ function fetchUserQuery(cityUrl) {
             contentEl.text("")
             $("#currentContainer").text("")
             currentName = data.name
-            completeURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
+            completeURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
             fetchComplete()
             
         }
@@ -153,7 +153,7 @@ function newSearch() {
 // Taking the data from user input
 searchBtnEl.on("click", function () {
     console.log(city.val())
-    cityURL = `http://api.openweathermap.org/data/2.5/weather?q=${city.val()}&units=imperial&appid=${apiKey}`
+    cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&units=imperial&appid=${apiKey}`
     
     //adding Search Item to Local Storage
     localStorageArray.push(city.val())
