@@ -60,7 +60,7 @@ function fetchUserQuery(cityUrl) {
             contentEl.text("")
             $("#currentContainer").text("")
             currentName = data.name
-            completeURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
+            completeURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
             fetchComplete()
             
         }
