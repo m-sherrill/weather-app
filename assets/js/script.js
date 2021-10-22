@@ -123,7 +123,7 @@ let currentHTML = `<div class="container center-align">
 <div class="container">
     <div class="col s4" id="current-temp"><h6>Temp</h6><p>${currentTemp}°F</p></div>
     <div class="col s4" id="current-humidity"><h6>Humidity</h6><p>${currentHumidity}%</p></div>
-    <div class="col s4" id="current-icon"><img src="http://openweathermap.org/img/wn/${currentIcon}@2x.png"></div>
+    <div class="col s4" id="current-icon"><img src="https://openweathermap.org/img/wn/${currentIcon}@2x.png"></div>
 </div>
 </div>
 
@@ -141,7 +141,7 @@ $("#currentContainer").html(currentHTML)
     for (let i = 0; i < futureIconArray.length; i++) {
         
         let icon = $("<p>")
-        let iconHTML = `<img src="http://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png" id="icons-el${[i]}">`
+        let iconHTML = `<img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png" id="icons-el${[i]}">`
         icon.html(iconHTML)
         contentEl.append(icon)
     } 
