@@ -1,0 +1,65 @@
+body {
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+}
+
+header {
+    color: white;
+    text-shadow: 1px 1px 1px black;
+}
+#content-container {
+    background-color:rgba(255, 255, 255, 0.5)
+    
+}
+
+#current-temp {
+    padding: 5px;
+    background-color: rgba(0, 41, 128, 0.459);
+    height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#current-humidity {
+    padding: 5px;
+    background-color: rgba(139, 105, 219, 0.459);
+    height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#current-icon{
+    padding: 5px;
+    background-color: rgba(91, 108, 201, 0.459);
+    height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#current-city {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+#current-day {
+    font-weight-bold;
+    font-size: 20px;
+}
+
+#current-elements {
+    background-color: rgba(0, 0, 0, 0.473);
+    color: white;
+    height: 120px;
+}
+#currentContainer {
+    padding: 10px;
+
+}
+
+.uvicolor {
+    background-color: white;
+}
+
+h6 {
+    font-weight: bold;
+}

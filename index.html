@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/styles.css" />
-    
-    <title>Library of FOOLS Search</title>
+
+    <title>Amazing Weather Dashboard</title>
 </head>
+
 <body>
-    <div id="searchContainer" class="container">
-        <label for="userQuery">search here bruh:</label>
-        <input type="text" id="city" />
-        <button id="searchBtn">Search</button>
+    <header>
+        <div class="container center-align">
+            <div class="row col s12 center-align">
+                <h4>Amazing Weather Dashboard</h4>
+            </div>
+        </div>
+
+    </header>
+    <div class="container" id="content-container">
+        <div class="row">
+            <div id="searchContainer" class="col s12 m3 left-align">
+                <input type="text" id="city" placeholder="Enter a city name..." />
+                <button id="searchBtn">Search</button>
+            </div>
+            <div id="currentContainer" class="col s12 m9 center-align">
+               <!-- Generate Content Here -->
+            </div>
+
+        </div>
+        <div id="contentContainer" class="col s12 m9 center-align">
+
+
+        </div>
     </div>
-    <div id="contentContainer" class="container">
-        <!-- Search results go here -->
     </div>
+
+    <footer>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
-<script src="./assets/js/script.js"></script>
+
+
 </html>
