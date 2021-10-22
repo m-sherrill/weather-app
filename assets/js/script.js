@@ -157,7 +157,7 @@ searchBtnEl.on("click", function () {
     
     //adding Search Item to Local Storage
     localStorageArray.push(city.val())
-    localStorage.setItem("City", JSON.stringify(localStorageArray))
+    window.localStorage.setItem("City", JSON.stringify(localStorageArray))
 
     
 
