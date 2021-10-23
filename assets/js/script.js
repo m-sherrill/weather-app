@@ -117,7 +117,7 @@ $("#searchBtn").on("click", function () {
     //adding the newest searched city to the list of buttons
     let pTag = $("<p>")
     let savedBtn = $("<button>")
-    savedBtn.attr("id", "saved-btn").attr("class", "btn waves-effect waves indigo").attr("name", city.val()).html(city.val())
+    savedBtn.attr("id", "saved-btn").attr("class", "btn waves-effect waves indigo lighten-4").attr("name", city.val()).html(city.val())
     pTag.append(savedBtn)
     $("#local-storage-history").prepend(pTag)
 
@@ -135,7 +135,7 @@ function localStorageSave() {
     for (let i = 0; i < savedCities.length; i++) {
         let pTag = $("<p>")
         let savedBtn = $("<button>")
-        savedBtn.attr("id", "saved-btn").attr("class", "btn waves-effect indigo").attr("name", savedCities[i]).html(savedCities[i])
+        savedBtn.attr("id", "saved-btn").attr("class", "btn waves-effect indigo lighten-4").attr("name", savedCities[i]).html(savedCities[i])
         pTag.append(savedBtn)
         $("#local-storage-history").prepend(pTag)
     }
