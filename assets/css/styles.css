@@ -7,37 +7,19 @@ header {
     color: white;
     text-shadow: 1px 1px 1px black;
 }
+
+row {
+    margin: 0px;
+    padding: 0px;
+}
+
 #content-container {
     background-color:rgba(255, 255, 255, 0.5)
     
 }
 
-#current-temp {
-    padding: 5px;
-    background-color: rgba(0, 41, 128, 0.459);
-    height: 100px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#current-humidity {
-    padding: 5px;
-    background-color: rgba(139, 105, 219, 0.459);
-    height: 100px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#current-icon{
-    padding: 5px;
-    background-color: rgba(91, 108, 201, 0.459);
-    height: 100px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
 #current-city {
-    font-size: 25px;
+    font-size: 35px;
     font-weight: bold;
 }
 
@@ -46,13 +28,10 @@ header {
     font-size: 20px;
 }
 
-#current-elements {
-    background-color: rgba(0, 0, 0, 0.473);
-    color: white;
-    height: 120px;
-}
+
 #currentContainer {
-    padding: 10px;
+    margin: 0px;
+    padding: 0px;
 
 }
 
@@ -62,4 +41,98 @@ header {
 
 h6 {
     font-weight: bold;
+}
+
+#five-day-container {
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    
+}
+
+#five-day-header {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #04123f;
+    margin: 0px;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    padding: 30px;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#five-day-el {
+    padding: 10px;
+    background-color: rgba(91, 108, 201, 0.459);
+    width:max-content;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-inline: 5px;
+    font-size: 16px;
+    flex: 1;
+}
+
+
+#current-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    padding: 20px;
+
+}
+
+#current-el {
+    flex: 1;
+    padding: 10px;
+    background-color: #a392d998;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 16px;
+    border-radius: 10px 10px 5px;
+}
+
+#current-el2 {
+    flex: 1;
+    padding: 10px;
+    background-color: #a392d998;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 16px;
+    border-radius: 10px 10px 5px;
+}
+
+
+#current-icon {
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+    background-color: white;
+}
+
+#current-day-header {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #04123f;
+    margin: 0px;
+    margin-top: 1px;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    padding: 30px;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#searchContainer {
+    background-color: white;
 }

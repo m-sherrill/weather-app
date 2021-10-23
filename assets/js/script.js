@@ -15,7 +15,7 @@
 
 // General Variables 
 
-let contentEl = $("#contentContainer");
+let contentEl = $("#five-day-container");
 let searchBtnEl = $("#searchBtn");
 let city = $("#city")
 let apiKey = "a38d9f511d30c352d92d46b549dfdcd9"
@@ -62,7 +62,7 @@ function fetchUserQuery(cityUrl) {
             currentName = data.name
             completeURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
             fetchComplete()
-            
+
         }
         )
 }
@@ -98,53 +98,59 @@ function fetchComplete() {
                 futureTempArray.push(futureTemp)
                 futureHumidityArray.push(futureHumidity)
                 futureWindSpeedArray.push(futureWindSpeed)
-                
+
             }
 
             // Future Day Loop
             for (let i = 1; i < futureArray.length; i++) {
                 futureDay = moment().add([i], 'days').format("MMM Do YY")
                 futureDayArray.push(futureDay)
-                
-            }
+                console.log()
 
+            }
+            console.log(futureDayArray)
             addContent()
         })
 }
 
-
+// add's content to the page after search
 function addContent() {
-    
-let currentHTML = `<div class="container center-align">
-<div class="row" id="current-city">${currentName}</div>
-<div class="row" id="current-day">${currentDay}</div>
-</div>
-<div class="row center-align">
-<div class="container">
-    <div class="col s4" id="current-temp"><h6>Temp</h6><p>${currentTemp}°F</p></div>
-    <div class="col s4" id="current-humidity"><h6>Humidity</h6><p>${currentHumidity}%</p></div>
-    <div class="col s4" id="current-icon"><img src="https://openweathermap.org/img/wn/${currentIcon}@2x.png"></div>
-</div>
-</div>
 
-<div class="row center-align">
-<div class="container">
-    <div class="col s6" id="current-elements"><h6>Wind Speed</h6><p>${currentWindSpeed} mph</p></div>
-    <div class="col s6" id="current-elements"><h6>UV Index</h6><p>${currentUVI}</p><p><div class="uvicolor">Color Code</div></p></div>
+    // current day's information container
+    let currentHTML = `<div class="row" id="current-day-header">What can I expect today? Current Forecast</div><div class="container center-align">
+<div class="row" id="current-city">${currentName}<h6>${currentDay}<h6></div>
+<div class="container" id="current-flex">
+    <div id="current-el"><h6>Tempurature</h6><p>${currentTemp}° F</p></div>
+    <div id="current-icon"><img src="https://openweathermap.org/img/wn/${currentIcon}@2x.png"></div>
+    <div id="current-el"><h6>Humidity</h6><p>${currentHumidity}%</p></div>
 </div>
+<div class="container" id="current-flex">
+    <div class="col s6" id="current-el2"><h6>Wind Speed</h6><p>${currentWindSpeed} mph</p></div>
+    <div class="col s6" id="current-el2"><h6>UV Index</h6><p>${currentUVI}</p><p><div class="uvicolor">Color Code</div></p></div>
 </div>`
 
-$("#currentContainer").html(currentHTML)
+    $("#currentContainer").append(currentHTML)
+
+    // five day forcast container
+    
 
 
-
-    for (let i = 0; i < futureIconArray.length; i++) {
+    for (let i = 0; i < futureArray.length-1; i++) {
         
-        let icon = $("<p>")
-        let iconHTML = `<img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png" id="icons-el${[i]}">`
-        icon.html(iconHTML)
-        contentEl.append(icon)
-    } 
+        let fiveDayHTMLContent = `<div class="" id="five-day-el" name="day"><h6>${futureDayArray[i]}</h6><img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png"><br/>Tempurature: ${futureTempArray[i]}°F<br/>Humidity: ${futureHumidityArray[i]}%<br/>Wind Speed: ${futureWindSpeedArray[i]}mph</div>`
+        $("#five-day-container").append(fiveDayHTMLContent)
+
+        }
+    
+        
+
+    // for (let i = 0; i < futureIconArray.length; i++) {
+
+    //     let icon = $("<p>")
+    //     let iconHTML = `<img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png" id="icons-el${[i]}">`
+    //     icon.html(iconHTML)
+    //     $("#five-day-el").append(icon)
+    // } 
 }
 
 function newSearch() {
@@ -154,12 +160,10 @@ function newSearch() {
 searchBtnEl.on("click", function () {
     console.log(city.val())
     cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&units=imperial&appid=${apiKey}`
-    
+
     //adding Search Item to Local Storage
     localStorageArray.push(city.val())
     localStorage.setItem("City", JSON.stringify(localStorageArray))
-
-    
 
     //Starting the first fetch
     fetchUserQuery(cityURL)
