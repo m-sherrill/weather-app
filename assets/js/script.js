@@ -82,10 +82,10 @@ function fetchComplete() {
             futureHumidityArray = []
 
             // Current Stats
-            currentTemp = (data.current.temp)
+            currentTemp = Math.round((data.current.temp))
             currentHumidity = (data.current.humidity)
             currentIcon = (data.current.weather[0].icon)
-            currentWindSpeed = (data.current.wind_speed)
+            currentWindSpeed = Math.round((data.current.wind_speed))
             currentUVI = (data.current.uvi)
 
             // Future Data Loop
@@ -118,31 +118,31 @@ function addContent() {
 
     // current day's information container
     let currentHTML = `<div class="row" id="current-day-header">What can I expect today? Current Forecast</div><div class="container center-align">
-<div class="row" id="current-city">${currentName}<h6>${currentDay}<h6></div>
-<div class="container" id="current-flex">
-    <div id="current-el"><h6>Tempurature</h6><p>${currentTemp}° F</p></div>
-    <div id="current-icon"><img src="https://openweathermap.org/img/wn/${currentIcon}@2x.png"></div>
-    <div id="current-el"><h6>Humidity</h6><p>${currentHumidity}%</p></div>
-</div>
-<div class="container" id="current-flex">
-    <div class="col s6" id="current-el2"><h6>Wind Speed</h6><p>${currentWindSpeed} mph</p></div>
-    <div class="col s6" id="current-el2"><h6>UV Index</h6><p>${currentUVI}</p><p><div class="uvicolor">Color Code</div></p></div>
-</div>`
+    <div class="row" id="current-city">${currentName}<h6>${currentDay}<h6></div>
+    <div class="container" id="current-flex">
+        <div id="current-el"><h6>Tempurature</h6><p>${currentTemp}° F</p></div>
+        <div id="current-icon"><img src="https://openweathermap.org/img/wn/${currentIcon}@2x.png"></div>
+        <div id="current-el"><h6>Humidity</h6><p>${currentHumidity}%</p></div>
+    </div>
+    <div class="container" id="current-flex">
+        <div class="col s6" id="current-el2"><h6>Wind Speed</h6><p>${currentWindSpeed} mph</p><img src="assets/images/wind.png"></div>
+        <div class="col s6" id="current-el2"><h6>UV Index</h6><p>${currentUVI}</p><p><div class="uvicolor">Color Code</div></p></div>
+    </div>`
 
     $("#currentContainer").append(currentHTML)
 
     // five day forcast container
-    
 
 
-    for (let i = 0; i < futureArray.length-1; i++) {
-        
+
+    for (let i = 0; i < futureArray.length - 1; i++) {
+
         let fiveDayHTMLContent = `<div class="" id="five-day-el" name="day"><h6>${futureDayArray[i]}</h6><img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png"><br/>Tempurature: ${futureTempArray[i]}°F<br/>Humidity: ${futureHumidityArray[i]}%<br/>Wind Speed: ${futureWindSpeedArray[i]}mph</div>`
         $("#five-day-container").append(fiveDayHTMLContent)
 
-        }
-    
-        
+    }
+
+
 
     // for (let i = 0; i < futureIconArray.length; i++) {
 
@@ -167,6 +167,25 @@ searchBtnEl.on("click", function () {
 
     //Starting the first fetch
     fetchUserQuery(cityURL)
+    localStorageSave ()
 
 })
+
+function localStorageSave () {
+    let savedCities = JSON.parse(localStorage.getItem("City"))
+console.log(savedCities)
+    for (let i = 0; i < savedCities.length; i++) {
+        let pTag = $("<p>")
+        let savedBtn = $("<button>")
+        savedBtn.attr("id", "saved-btn")
+        savedBtn.attr("name", savedCities[i])
+        savedBtn.html(savedCities[i])
+        console.log(savedBtn)
+        pTag.append(savedBtn)
+        $("#local-storage-history").append(pTag)
+        
+    }
+}
+
+localStorageSave ()
 

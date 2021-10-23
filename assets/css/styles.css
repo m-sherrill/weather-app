@@ -1,6 +1,7 @@
 body {
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
+    font-size: 20px;
 }
 
 header {
@@ -43,6 +44,11 @@ h6 {
     font-weight: bold;
 }
 
+h3 {
+    font-size: 30px;
+    font-weight: bold;
+}
+
 #five-day-container {
     background-color: transparent;
     display: flex;
@@ -69,12 +75,12 @@ h6 {
 #five-day-el {
     padding: 10px;
     background-color: rgba(91, 108, 201, 0.459);
-    width:max-content;
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-inline: 5px;
+    margin-inline: 6px;
     font-size: 16px;
     flex: 1;
+    border: 1px solid white;
 }
 
 
@@ -82,30 +88,34 @@ h6 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
+    align-items: center;
     width: 100%;
     padding: 20px;
-
 }
 
 #current-el {
     flex: 1;
     padding: 10px;
     background-color: #a392d998;
+    scroll-margin-inline: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    font-size: 16px;
     border-radius: 10px 10px 5px;
+    font-weight: bold;
+    border: 1px solid white;
+    
 }
 
 #current-el2 {
     flex: 1;
     padding: 10px;
     background-color: #a392d998;
+    height: 160px;
     margin-left: 20px;
     margin-right: 20px;
-    font-size: 16px;
     border-radius: 10px 10px 5px;
+    border: 1px solid white;
+    font-weight: bold;
 }
 
 
@@ -117,6 +127,7 @@ h6 {
     margin-right: 30px;
     padding: 10px;
     background-color: white;
+    
 }
 
 #current-day-header {
@@ -133,6 +144,9 @@ h6 {
     border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-/* #searchContainer {
-    background-color: white;
-} */
+#local-storage-history {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 5px;
+    text-align: center;
+}
