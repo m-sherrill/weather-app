@@ -14,45 +14,62 @@
 <body>
     <header>
         <div class="container center-align">
-            <div class="row col s12 center-align">
-                <h4>Amazing Weather Dashboard</h4>
+            <div class="row col s12 center-align" id="heading">
+                <h4>SIMPLY A WEATHER DASHBOARD</h4>
             </div>
         </div>
 
     </header>
     <div class="container" id="content-container">
-        <div class="row">
+        <div class="row" id="search-wrapper">
             <div id="searchContainer" class="col s12 m3 left-align">
-                <input type="text" id="city" placeholder="Enter a city name..." />
-                <button id="searchBtn">Search</button>
-            <div id="local-storage-history">
-                <!-- Local Storage history populates here  -->
+                <div id="search-bar" class="input-field">
+                    <input type="text" id="city" placeholder="Enter a city name..." />
+                    <button class="btn waves-effect indigo darken-4" id="searchBtn">Search</button>
+                </div>
+                <div id="local-storage-history">
+                    <!-- Local Storage history populates here  -->
+                </div>
+                <div id="clear-storage">
+                    <button class="btn waves-effect indigo darken-4" id="clear-storage-btn">Clear Search History</button>
+                </div>
             </div>
-            </div>
-        
-            
+
+
             <div id="currentContainer" class="col s12 m9 center-align">
-                
+                <h5>Welcome to the... <p> 
+                    <strong>Simple Weather Dashboard</strong><p>Search a city to for a quick weather snapshot!
+                        <!-- <div class="carousel">
+                            <a class="carousel-item" href="#one!"><img src="assets/images/pinwheels-g77185671c_640(2).jpg"></a>
+                            <a class="carousel-item" href="#two!"><img src="assets/images/cyclone-g1d97843fa_640(2).jpg"></a>
+                            <a class="carousel-item" href="#three!"><img src="assets/images/thunderstorm-gccc750e57_640(2).jpg"></a>
+                            <a class="carousel-item" href="#four!"><img src="assets/images/snow-ga72f86e0a_640(2).jpg"></a>
+                            <a class="carousel-item" href="#five!"><img src="assets/images/rain-g6577156b2_640(2).jpg"></a>
+                          </div> -->
+
+                <!-- Population of data for current weather -->
             </div>
-
+            
+          
         </div>
-        
-            <div class="row" id="five-day-header">What's coming up? 5 Day Forecast</div>
-            <div id="five-day-container" class="row center-align">
 
-
-
+        <div class="row" id="five-day-header">What's coming up? Five Day Forecast</div>
+        <div id="five-day-container" class="row center-align">
+            <!-- Population of data for five day forcast -->
         </div>
     </div>
-    
+
 
     <footer>
-        <div>Icons made by <a href="https://www.flaticon.com/authors/darius-dan" title="Darius Dan">Darius Dan</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-    </footer>
+        
+            
+       
+        </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 
