@@ -17,7 +17,7 @@ Current Weather Conditions:
     - When viewing the UV Index, there is a color indicator to signal low to extreme. This follows the UV Index color indicators of:
         - Green (low)
         - Yellow (moderate)
-        - orange (high)
+        - Orange (high)
         - Red (very high)
         - Violet (extreme)
 
