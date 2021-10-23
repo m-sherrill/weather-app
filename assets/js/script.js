@@ -35,7 +35,7 @@ let futureHumidity
 let futureDay
 
 // Local Storage Variables
-localStorageArray = JSON.parse(localStorage.getItem("City")) 
+localStorageArray = JSON.parse(localStorage.getItem("City")) || []
 
 
 // fetching the city API to get Lat/Lon Values and city name
@@ -161,7 +161,7 @@ searchBtnEl.on("click", function () {
 
 // populates the page on load with what it is in local storage
 function localStorageSave() {
-    let savedCities = JSON.parse(localStorage.getItem("City"))
+    let savedCities = JSON.parse(localStorage.getItem("City")) || []
     
 
     for (let i = 0; i < savedCities.length; i++) {
