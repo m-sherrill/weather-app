@@ -47,7 +47,7 @@ let futureHumidity
 let futureDay
 
 // Local Storage Variables
-let localStorageArray = []
+localStorageArray = JSON.parse(localStorage.getItem("City")) 
 
 
 // fetching the city API to get Lat/Lon Values and city name
@@ -143,14 +143,6 @@ function addContent() {
     }
 
 
-
-    // for (let i = 0; i < futureIconArray.length; i++) {
-
-    //     let icon = $("<p>")
-    //     let iconHTML = `<img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png" id="icons-el${[i]}">`
-    //     icon.html(iconHTML)
-    //     $("#five-day-el").append(icon)
-    // } 
 }
 
 function newSearch() {
@@ -165,27 +157,40 @@ searchBtnEl.on("click", function () {
     localStorageArray.push(city.val())
     localStorage.setItem("City", JSON.stringify(localStorageArray))
 
+    let pTag = $("<p>")
+    let savedBtn = $("<button>")
+    savedBtn.attr("id", "saved-btn")
+    savedBtn.attr("name", city.val())
+    savedBtn.html(city.val())
+    console.log(savedBtn)
+    pTag.append(savedBtn)
+    $("#local-storage-history").append(pTag)
+
+
     //Starting the first fetch
     fetchUserQuery(cityURL)
-    localStorageSave ()
 
 })
 
-function localStorageSave () {
+function localStorageSave() {
     let savedCities = JSON.parse(localStorage.getItem("City"))
-console.log(savedCities)
+    console.log(savedCities)
+
     for (let i = 0; i < savedCities.length; i++) {
-        let pTag = $("<p>")
-        let savedBtn = $("<button>")
-        savedBtn.attr("id", "saved-btn")
-        savedBtn.attr("name", savedCities[i])
-        savedBtn.html(savedCities[i])
-        console.log(savedBtn)
-        pTag.append(savedBtn)
-        $("#local-storage-history").append(pTag)
         
-    }
+            let pTag = $("<p>")
+            let savedBtn = $("<button>")
+            savedBtn.attr("id", "saved-btn")
+            savedBtn.attr("name", savedCities[i])
+            savedBtn.html(savedCities[i])
+            console.log(savedBtn)
+            pTag.append(savedBtn)
+            $("#local-storage-history").append(pTag)
+
+        }
 }
 
-localStorageSave ()
+// 
+
+localStorageSave()
 
