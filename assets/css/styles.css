@@ -2,17 +2,21 @@ body {
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
     font-size: 20px;
+    font-family: 'Dosis', sans-serif;
 }
 
 header {
     color: white;
     text-shadow: 1px 1px 1px black;
+    font-family: 'Raleway', sans-serif;
+
 }
 
 row {
     margin: 0px;
     padding: 0px;
 }
+
 
 #city {
     color: #c7c8cc;
@@ -65,8 +69,8 @@ h3 {
 
 #five-day-header {
     display: none;
-    font-size: 20px;
-    font-weight: bold;
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
     background-color: #04123f;
     margin: 0px;
     color: white;
@@ -102,7 +106,7 @@ h3 {
     flex: 1;
     padding: 10px;
     background-color: #a392d998;
-    scroll-margin-inline: 5px;
+    margin-inline: 5px;
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 10px 10px 5px;
@@ -136,8 +140,8 @@ h3 {
 }
 
 #current-day-header {
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
     background-color: #04123f;
     margin: 0px;
     margin-top: 1px;
@@ -189,7 +193,10 @@ h3 {
     
 }
 
-#heading {
+#heading,
+#footer {
+    font-size: 16px;
+    color: white;
     background-color: #04123f;
     margin-top: 25px;
     padding: 20px;
@@ -199,4 +206,17 @@ h3 {
 #city:focus {
     border-bottom: 1px solid #04123f;
     box-shadow: 0 1px 0 0 #04123f;
+  }
+
+#landing-page {
+    padding: 10px;
+    background-color: #a392d998;
+    margin: 50px;
+    border-radius: 10px 10px 5px;
+    font-weight: bold;
+    border: 1px solid white;
+  }
+
+  .uvicolor {
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }

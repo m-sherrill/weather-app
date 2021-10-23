@@ -1,10 +1,9 @@
-// UV index -- 1-2 (low) 3-5 (moderate) 6-7 (high) 8-10 (very high) 11+ (extreme)
+
 
 
 // General Variables 
 
-let contentEl = $("#five-day-container");
-let searchBtnEl = $("#searchBtn");
+
 let city = $("#city")
 let apiKey = "a38d9f511d30c352d92d46b549dfdcd9"
 let cityURL
@@ -45,7 +44,7 @@ function fetchUserQuery(cityUrl) {
             return response.json();
         })
         .then(function (data) {
-            contentEl.text("")
+            $("#five-day-container").text("")
             $("#currentContainer").text("")
             currentName = data.name
             completeURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
@@ -105,7 +104,7 @@ function fetchComplete() {
 function addContent() {
 
     // current day's information container
-    let currentHTML = `<div class="row" id="current-day-header">What can I expect today? Current Forecast</div><div class="container center-align">
+    let currentHTML = `<div class="row" id="current-day-header">What can I expect today? <b>Current Forecast</b></div><div class="container center-align">
     <div class="row" id="current-city">${currentName}<h6>${currentDay}<h6></div>
     <div class="container" id="current-flex">
         <div id="current-el"><h6>Temperature</h6><p>${currentTemp}° F</p></div>
@@ -123,19 +122,38 @@ function addContent() {
 
     for (let i = 0; i < futureArray.length - 1; i++) {
 
-        let fiveDayHTMLContent = `<div class="" id="five-day-el" name="day"><h6>${futureDayArray[i]}</h6><img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png"><br/><b>Temperature:</b> ${futureTempArray[i]}°F<br/><b>Humidity:</b> ${futureHumidityArray[i]}%<br/><b>Wind Speed:</b> ${futureWindSpeedArray[i]} mph</div>`
+        let fiveDayHTMLContent = `<div class="" id="five-day-el" name="day"><h6>${futureDayArray[i]}</h6><img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png"><br/><b>Temperature:</b> ${futureTempArray[i]}° F<br/><b>Humidity:</b> ${futureHumidityArray[i]}%<br/><b>Wind Speed:</b> ${futureWindSpeedArray[i]} mph</div>`
         $("#five-day-container").append(fiveDayHTMLContent)
-
     }
 
-
+    if (currentUVI <= 2 ) {
+        $(".uvicolor").attr("style", "background-color: green;")
+        $(".uvicolor").text("Low")
+    } else if (3 <= currentUVI <= 5) {
+        $(".uvicolor").attr("style", "background-color: yellow;")
+        $(".uvicolor").text("Moderate")
+    } else if (6 <= currentUVI <= 7) {
+        $(".uvicolor").attr("style", "background-color: orange;")
+        $(".uvicolor").text("High")
+    } else if (8 <= currentUVI <= 10) {
+        $(".uvicolor").attr("style", "background-color: red;")
+        $(".uvicolor").text("High")
+    } else if (11 <= currentUVI) {
+        $(".uvicolor").attr("style", "background-color: violet;")
+        $(".uvicolor").text("High")
+    } 
 }
 
-function newSearch() {
-}
+// function colorCodeUVI() {
+// // UV index -- 1-2 (low) 3-5 (moderate) 6-7 (high) 8-10 (very high) 11+ (extreme)
+//     $(".uvicolor").each(function () {
+        
+        
+//       })
+// }
 
 // Taking the data from user input
-searchBtnEl.on("click", function () {
+$("#searchBtn").on("click", function () {
 
     cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&units=imperial&appid=${apiKey}`
 
@@ -180,25 +198,23 @@ function localStorageSave() {
     }
 }
 
-// 
+// Renders what is saved in local storage to the page when your load
 
 localStorageSave()
 
-
+// Searches from the buttons selected from the search history
 $(document).on("click", "#saved-btn", function () {
     cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${$(this).attr("name")}&units=imperial&appid=${apiKey}`
     $("#five-day-header").css("display", "block")
     fetchUserQuery(cityURL)
 })
 
+
+// Clears out the search history
 $("#clear-storage-btn").on("click", function () {
     $("#local-storage-history").text("")
     localStorage.removeItem("City")
-    
+
 }
 )
 
-
-$(document).ready(function(){
-    $('.carousel').carousel()
-  })
