@@ -1,41 +1,12 @@
-
-
-
 // General Variables 
-
-
 let city = $("#city")
 let apiKey = "a38d9f511d30c352d92d46b549dfdcd9"
 let cityURL
 let completeURL
-
-// Current Day Variables
-let currentTemp
-let currentHumidity
-let currentIcon
-let currentWindSpeed
-let currentUVI
-let currentName
 let currentDay = moment().format('MMMM Do YYYY')
-
-// 5-day Forecast Arrays
 let futureArray = [0, 1, 2, 3, 4, 5]
-let futureDayArray = []
-let futureTempArray = []
-let futureIconArray = []
-let futureWindSpeedArray = []
-let futureHumidityArray = []
 
-// 5-day Forecase Variables
-let futureIcon
-let futureTemp
-let futureWindSpeed
-let futureHumidity
-let futureDay
-
-// Local Storage Variables
 localStorageArray = JSON.parse(localStorage.getItem("City")) || []
-
 
 // fetching the city API to get Lat/Lon Values and city name
 function fetchUserQuery(cityUrl) {
@@ -49,9 +20,7 @@ function fetchUserQuery(cityUrl) {
             currentName = data.name
             completeURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${data.coord.lat}&lon=${data.coord.lon}&exclude=minutely,hourly,alerts&units=imperial&appid=${apiKey}`
             fetchComplete()
-
-        }
-        )
+        })
 }
 
 // fetching the complete data API now that I have the Lat/Lon values
@@ -85,17 +54,13 @@ function fetchComplete() {
                 futureTempArray.push(futureTemp)
                 futureHumidityArray.push(futureHumidity)
                 futureWindSpeedArray.push(futureWindSpeed)
-
             }
 
             // Future Day Loop
             for (let i = 1; i < futureArray.length; i++) {
                 futureDay = moment().add([i], 'days').format("MMM Do YYYY")
                 futureDayArray.push(futureDay)
-
-
             }
-
             addContent()
         })
 }
@@ -104,7 +69,8 @@ function fetchComplete() {
 function addContent() {
 
     // current day's information container
-    let currentHTML = `<div class="row" id="current-day-header">What can I expect today? <b>Current Forecast</b></div><div class="container center-align">
+    let currentHTML = `<div class="row" id="current-day-header">What can I expect today? <b>Current Forecast</b></div>
+    <div class="container center-align">
     <div class="row" id="current-city">${currentName}<h6>${currentDay}<h6></div>
     <div class="container" id="current-flex">
         <div id="current-el"><h6>Temperature</h6><p>${currentTemp}° F</p></div>
@@ -119,38 +85,24 @@ function addContent() {
     $("#currentContainer").append(currentHTML)
 
     // five day forcast container
-
     for (let i = 0; i < futureArray.length - 1; i++) {
-
         let fiveDayHTMLContent = `<div class="" id="five-day-el" name="day"><h6>${futureDayArray[i]}</h6><img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png"><br/><b>Temperature:</b> ${futureTempArray[i]}° F<br/><b>Humidity:</b> ${futureHumidityArray[i]}%<br/><b>Wind Speed:</b> ${futureWindSpeedArray[i]} mph</div>`
+
         $("#five-day-container").append(fiveDayHTMLContent)
     }
-
-    if (currentUVI <= 2 ) {
-        $(".uvicolor").attr("style", "background-color: green;")
-        $(".uvicolor").text("Low")
+    // Color coding of the UV Index
+    if (currentUVI <= 2) {
+        $(".uvicolor").attr("style", "background-color: green;").text("Low")
     } else if (3 <= currentUVI <= 5) {
-        $(".uvicolor").attr("style", "background-color: yellow;")
-        $(".uvicolor").text("Moderate")
+        $(".uvicolor").attr("style", "background-color: yellow;").text("Moderate")
     } else if (6 <= currentUVI <= 7) {
-        $(".uvicolor").attr("style", "background-color: orange;")
-        $(".uvicolor").text("High")
+        $(".uvicolor").attr("style", "background-color: orange;").text("High")
     } else if (8 <= currentUVI <= 10) {
-        $(".uvicolor").attr("style", "background-color: red;")
-        $(".uvicolor").text("High")
+        $(".uvicolor").attr("style", "background-color: red;").text("High")
     } else if (11 <= currentUVI) {
-        $(".uvicolor").attr("style", "background-color: violet;")
-        $(".uvicolor").text("High")
-    } 
+        $(".uvicolor").attr("style", "background-color: violet;").text("High")
+    }
 }
-
-// function colorCodeUVI() {
-// // UV index -- 1-2 (low) 3-5 (moderate) 6-7 (high) 8-10 (very high) 11+ (extreme)
-//     $(".uvicolor").each(function () {
-        
-        
-//       })
-// }
 
 // Taking the data from user input
 $("#searchBtn").on("click", function () {
@@ -165,41 +117,31 @@ $("#searchBtn").on("click", function () {
     //adding the newest searched city to the list of buttons
     let pTag = $("<p>")
     let savedBtn = $("<button>")
-    savedBtn.attr("id", "saved-btn")
-    savedBtn.attr("class", "btn waves-effect waves indigo")
-    savedBtn.attr("name", city.val())
-    savedBtn.html(city.val())
+    savedBtn.attr("id", "saved-btn").attr("class", "btn waves-effect waves indigo").attr("name", city.val()).html(city.val())
     pTag.append(savedBtn)
     $("#local-storage-history").prepend(pTag)
-
 
     //Starting the first fetch
     fetchUserQuery(cityURL)
 
+    city.val("")
 })
 
 
-// populates the page on load with what it is in local storage
+// populates the page on load with what is in local storage
 function localStorageSave() {
     let savedCities = JSON.parse(localStorage.getItem("City")) || []
 
-
     for (let i = 0; i < savedCities.length; i++) {
-
         let pTag = $("<p>")
         let savedBtn = $("<button>")
-        savedBtn.attr("id", "saved-btn")
-        savedBtn.attr("class", "btn waves-effect waves-white indigo")
-        savedBtn.attr("name", savedCities[i])
-        savedBtn.html(savedCities[i])
+        savedBtn.attr("id", "saved-btn").attr("class", "btn waves-effect indigo").attr("name", savedCities[i]).html(savedCities[i])
         pTag.append(savedBtn)
         $("#local-storage-history").prepend(pTag)
-
     }
 }
 
 // Renders what is saved in local storage to the page when your load
-
 localStorageSave()
 
 // Searches from the buttons selected from the search history
@@ -209,12 +151,9 @@ $(document).on("click", "#saved-btn", function () {
     fetchUserQuery(cityURL)
 })
 
-
 // Clears out the search history
 $("#clear-storage-btn").on("click", function () {
     $("#local-storage-history").text("")
     localStorage.removeItem("City")
-
-}
-)
+})
 

@@ -1,3 +1,5 @@
+/* General Styles, Header, Footer, Main Content Container */
+
 body {
     background: url("../images/background.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -5,153 +7,31 @@ body {
     font-family: 'Dosis', sans-serif;
 }
 
-header {
-    color: white;
-    text-shadow: 1px 1px 1px black;
-    font-family: 'Raleway', sans-serif;
-
-}
-
 row {
     margin: 0px;
     padding: 0px;
-}
-
-
-#city {
-    color: #c7c8cc;
-    text-shadow: 1px 1px 1px rgb(0, 15, 100);
-}
-
-#content-container {
-    background-color:rgba(255, 255, 255, 0.5)
-}
-
-#current-city {
-    font-size: 35px;
-    font-weight: bold;
-}
-
-#current-day {
-    font-weight-bold;
-    font-size: 20px;
-}
-
-
-#currentContainer {
-    margin: 0px;
-    padding: 0px;
-
-}
-
-.uvicolor {
-    background-color: white;
 }
 
 h6 {
     font-weight: bold;
 }
 
-h3 {
-    font-size: 30px;
-    font-weight: bold;
-}
-
-#five-day-container {
-    background-color: transparent;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-    width: 100%;
-    
-}
-
-#five-day-header {
-    display: none;
-    font-family: 'Raleway', sans-serif;
-    font-size: 25px;
-    background-color: #04123f;
-    margin: 0px;
+#heading, #footer {
     color: white;
-    text-shadow: 1px 1px 3px black;
-    text-align: center;
-    padding: 30px;
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-#five-day-el {
-    padding: 10px;
-    background-color: rgba(91, 108, 201, 0.459);
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-inline: 6px;
+    font-family: 'Raleway', sans-serif;
     font-size: 16px;
-    flex: 1;
-    border: 1px solid white;
-}
-
-
-#current-flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 20px;
-}
-
-#current-el {
-    flex: 1;
-    padding: 10px;
-    background-color: #a392d998;
-    margin-inline: 5px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-radius: 10px 10px 5px;
-    font-weight: bold;
-    border: 1px solid white;
-    
-}
-
-#current-el2 {
-    flex: 1;
-    padding: 10px;
-    background-color: #a392d998;
-    height: 160px;
-    margin-left: 20px;
-    margin-right: 20px;
-    border-radius: 10px 10px 5px;
-    border: 1px solid white;
-    font-weight: bold;
-}
-
-
-#current-icon {
-    border-radius: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 30px;
-    margin-right: 30px;
-    padding: 10px;
-    background-color: white;
-    
-}
-
-#current-day-header {
-    font-size: 25px;
-    font-family: 'Raleway', sans-serif;
-    background-color: #04123f;
-    margin: 0px;
-    margin-top: 1px;
     color: white;
-    text-shadow: 1px 1px 3px black;
-    text-align: center;
-    padding: 30px;
-    border-left: 1px solid rgba(255, 255, 255, 0.5);
-    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: #04123f;
+    margin-top: 25px;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
 }
+
+#content-container {
+    background-color: rgba(255, 255, 255, 0.5)
+}
+
+/* Search Container and Local Storage */
 
 #local-storage-history {
     margin-top: 10px;
@@ -182,41 +62,141 @@ h3 {
     padding-bottom: 30px;
 }
 
-.carousel {
-    margin: 0px;
-    padding: 0px;
-    height: 200px;
-}
-
-.carousel img {
-    border: 2px solid white;
-    
-}
-
-#heading,
-#footer {
-    font-size: 16px;
+#city {
     color: white;
-    background-color: #04123f;
-    margin-top: 25px;
-    padding: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    text-shadow: 1px 1px 1px #04123f;
+}
+
+#city::placeholder {
+    color: #04123f;
+    font-weight: bold;
+    text-shadow: 0px 0px 3px white;
 }
 
 #city:focus {
     border-bottom: 1px solid #04123f;
     box-shadow: 0 1px 0 0 #04123f;
-  }
+}
+
+/* Current Day Container */
+
+#current-city {
+    font-size: 35px;
+    font-weight: bold;
+}
+
+#current-day {
+    font-weight-bold;
+    font-size: 20px;
+}
+
+#currentContainer {
+    margin: 0px;
+    padding: 0px;
+}
 
 #landing-page {
     padding: 10px;
-    background-color: #a392d998;
+    background-color: rgba(91, 108, 201, 0.459);
     margin: 50px;
     border-radius: 10px 10px 5px;
     font-weight: bold;
     border: 1px solid white;
-  }
+}
 
-  .uvicolor {
+.uvicolor {
+    background-color: white;
     border: 1px solid rgba(255, 255, 255, 0.5);
-  }
+}
+
+#current-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+#current-el {
+    flex: 1;
+    padding: 10px;
+    background-color: rgba(91, 108, 201, 0.459);
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 10px 10px 5px;
+    font-weight: bold;
+    border: 1px solid white;
+}
+
+#current-icon {
+    border-radius: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+    background-color: white;
+}
+
+#current-el2 {
+    flex: 1;
+    padding: 10px;
+    background-color: rgba(91, 108, 201, 0.459);
+    height: 160px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px 10px 5px;
+    border: 1px solid white;
+    font-weight: bold;
+}
+
+#current-day-header {
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif;
+    background-color: #04123f;
+    margin: 0px;
+    margin-top: 1px;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    padding: 30px;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Five Day Forecast Container */
+#five-day-container {
+    background-color: transparent;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+}
+
+#five-day-header {
+    display: none;
+    font-family: 'Raleway', sans-serif;
+    font-size: 25px;
+    background-color: #04123f;
+    margin: 0px;
+    color: white;
+    text-shadow: 1px 1px 3px black;
+    text-align: center;
+    padding: 30px;
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+#five-day-el {
+    padding: 10px;
+    background-color: rgba(91, 108, 201, 0.459);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-inline: 6px;
+    font-size: 16px;
+    flex: 1;
+    border: 1px solid white;
+}
+
