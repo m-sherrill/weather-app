@@ -18,7 +18,7 @@ Current Weather Conditions:
         - Green (low)
         - Yellow (moderate)
         - orange (high)
-        - Red (severe)
+        - Red (very high)
         - Violet (extreme)
 
 5-Day Forecast:
