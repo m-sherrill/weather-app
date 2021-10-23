@@ -1,15 +1,3 @@
-// GIVEN a weather dashboard with form inputs
-// WHEN I search for a city
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
-// WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature(x), the humidity(x), the wind speed (x), and the UV index (x)
-// WHEN I view the UV index 
-// THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe (will need to generate an if/else statement)
-// WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
-
 // UV index -- 1-2 (low) 3-5 (moderate) 6-7 (high) 8-10 (very high) 11+ (extreme)
 
 
@@ -105,10 +93,10 @@ function fetchComplete() {
             for (let i = 1; i < futureArray.length; i++) {
                 futureDay = moment().add([i], 'days').format("MMM Do YY")
                 futureDayArray.push(futureDay)
-                console.log()
+                
 
             }
-            console.log(futureDayArray)
+            
             addContent()
         })
 }
@@ -133,8 +121,6 @@ function addContent() {
 
     // five day forcast container
 
-
-
     for (let i = 0; i < futureArray.length - 1; i++) {
 
         let fiveDayHTMLContent = `<div class="" id="five-day-el" name="day"><h6>${futureDayArray[i]}</h6><img src="https://openweathermap.org/img/wn/${futureIconArray[i]}@2x.png"><br/>Tempurature: ${futureTempArray[i]}°F<br/>Humidity: ${futureHumidityArray[i]}%<br/>Wind Speed: ${futureWindSpeedArray[i]}mph</div>`
@@ -150,19 +136,19 @@ function newSearch() {
 
 // Taking the data from user input
 searchBtnEl.on("click", function () {
-    console.log(city.val())
+    
     cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${city.val()}&units=imperial&appid=${apiKey}`
 
     //adding Search Item to Local Storage
     localStorageArray.push(city.val())
     localStorage.setItem("City", JSON.stringify(localStorageArray))
 
+    //adding the newest searched city to the list of buttons
     let pTag = $("<p>")
     let savedBtn = $("<button>")
     savedBtn.attr("id", "saved-btn")
     savedBtn.attr("name", city.val())
     savedBtn.html(city.val())
-    console.log(savedBtn)
     pTag.append(savedBtn)
     $("#local-storage-history").append(pTag)
 
@@ -172,9 +158,11 @@ searchBtnEl.on("click", function () {
 
 })
 
+
+// populates the page on load with what it is in local storage
 function localStorageSave() {
     let savedCities = JSON.parse(localStorage.getItem("City"))
-    console.log(savedCities)
+    
 
     for (let i = 0; i < savedCities.length; i++) {
         
@@ -183,7 +171,6 @@ function localStorageSave() {
             savedBtn.attr("id", "saved-btn")
             savedBtn.attr("name", savedCities[i])
             savedBtn.html(savedCities[i])
-            console.log(savedBtn)
             pTag.append(savedBtn)
             $("#local-storage-history").append(pTag)
 
@@ -194,3 +181,8 @@ function localStorageSave() {
 
 localStorageSave()
 
+
+$(document).on("click", "#saved-btn", function() {
+    cityURL = `https://api.openweathermap.org/data/2.5/weather?q=${$(this).attr("name")}&units=imperial&appid=${apiKey}`
+    fetchUserQuery(cityURL)
+} )
